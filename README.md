@@ -1,1 +1,1 @@
-# palindrome
+# A basic program to check if a string is plaindrome
