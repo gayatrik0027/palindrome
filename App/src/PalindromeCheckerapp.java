@@ -49,7 +49,7 @@ public class PalindromeCheckerapp {
         Scanner sc = new Scanner(System.in);
 
         // Accept user input
-        System.out.print("Enter a string: ");
+        System.out.print("Enter Your string: ");
         String input = sc.nextLine();
 
         String reversed = "";
