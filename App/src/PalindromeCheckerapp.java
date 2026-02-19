@@ -13,14 +13,11 @@
  * This class represents the entry point of the
  * Palindrome Checker Management System.
  *
- * At this stage, the application:
+ * The application:
  * - Starts execution from the main() method
  * - Displays a welcome message
- * - Shows application version
- *
- * No advanced palindrome management logic is implemented yet.
- *
- * The goal is to establish a clear startup flow.
+ * - Accepts user input
+ * - Checks whether the given string is a palindrome
  *
  * @author Gayathri K
  * @version 1.0
@@ -28,7 +25,7 @@
 
 import java.util.Scanner;
 
-public class PalindromeCheckerapp {
+public class UseCase1PalindromeCheckerApp {
 
     /**
      * Application entry point.
@@ -42,30 +39,29 @@ public class PalindromeCheckerapp {
 
         // Display Welcome Message
         System.out.println("=======================================");
-        System.out.println("  Welcome to Palindrome Checker System ");
-        System.out.println("  Version: 1.0");
+        System.out.println("   Welcome to Palindrome Checker System");
+        System.out.println("   Version: 1.0");
         System.out.println("=======================================\n");
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         // Accept user input
-        System.out.print("Enter Your string: ");
-        String input = sc.nextLine();
+        System.out.print("Enter your string: ");
+        String input = scanner.nextLine();
 
-        String reversed = "";
+        // Clean input (remove spaces & ignore case)
+        String cleanedInput = input.replaceAll("\\s+", "").toLowerCase();
 
-        // Reverse the string
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed += input.charAt(i);
-        }
+        // Reverse using StringBuilder
+        String reversed = new StringBuilder(cleanedInput).reverse().toString();
 
         // Check palindrome
-        if (input.equals(reversed)) {
+        if (cleanedInput.equals(reversed)) {
             System.out.println("Result: It is a palindrome.");
         } else {
             System.out.println("Result: It is not a palindrome.");
         }
 
-        sc.close();
+        scanner.close();
     }
 }
