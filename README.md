@@ -1,1 +1,1 @@
-# A basic program to check if a string is plaindrome
+# Queue + Stack based Palindrome Check program (UC6) in Java

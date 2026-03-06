@@ -1,67 +1,37 @@
-// Version 1.0
-// Author: Gayathri K
-// Use Case 1: Welcome Page
+import java.util.*;
 
-/**
- * ======================================================
- * MAIN CLASS - UseCase1PalindromeCheckerApp
- * ======================================================
- *
- * Use Case 1: Application Entry & Welcome Message
- *
- * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
- *
- * The application:
- * - Starts execution from the main() method
- * - Displays a welcome message
- * - Accepts user input
- * - Checks whether the given string is a palindrome
- *
- * @author Gayathri K
- * @version 1.0
- */
-
-import java.util.Scanner;
-
-public class UseCase1PalindromeCheckerApp {
-
-    /**
-     * Application entry point.
-     *
-     * This is the first method executed by the JVM
-     * when the program starts.
-     *
-     * @param args Command-line arguments
-     */
+public class PalindromeCheckerapp {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        // Display Welcome Message
-        System.out.println("=======================================");
-        System.out.println("   Welcome to Palindrome Checker System");
-        System.out.println("   Version: 1.0");
-        System.out.println("=======================================\n");
+        System.out.print("Enter a word: ");
+        String input = sc.nextLine();
 
-        Scanner scanner = new Scanner(System.in);
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
 
-        // Accept user input
-        System.out.print("Enter your string: ");
-        String input = scanner.nextLine();
-
-        // Clean input (remove spaces & ignore case)
-        String cleanedInput = input.replaceAll("\\s+", "").toLowerCase();
-
-        // Reverse using StringBuilder
-        String reversed = new StringBuilder(cleanedInput).reverse().toString();
-
-        // Check palindrome
-        if (cleanedInput.equals(reversed)) {
-            System.out.println("Result: It is a palindrome.");
-        } else {
-            System.out.println("Result: It is not a palindrome.");
+        // Enqueue and Push characters
+        for (char ch : input.toCharArray()) {
+            queue.add(ch);     // Enqueue
+            stack.push(ch);    // Push
         }
 
-        scanner.close();
+        boolean isPalindrome = true;
+
+        // Compare dequeue and pop
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
+        sc.close();
     }
 }
