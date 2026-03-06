@@ -1,19 +1,31 @@
+
 import java.util.Scanner;
+import java.util.Stack;
 
-public class PalindromeCheckerapp {
+// Palindrome service class
+class PalindromeChecker {
 
-    // Recursive method to check palindrome
-    static boolean isPalindrome(String str, int start, int end) {
-        if (start >= end) {
-            return true; // Base condition
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters to stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
         }
 
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
+        // Compare characters
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
+            }
         }
 
-        return isPalindrome(str, start + 1, end - 1);
+        return true;
     }
+}
+
+public class PalindromeServiceApp {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -21,11 +33,12 @@ public class PalindromeCheckerapp {
         System.out.print("Enter a word: ");
         String input = sc.nextLine();
 
-        if (isPalindrome(input, 0, input.length() - 1)) {
+        PalindromeChecker checker = new PalindromeChecker();
+
+        if (checker.checkPalindrome(input))
             System.out.println("Palindrome");
-        } else {
+        else
             System.out.println("Not a Palindrome");
-        }
 
         sc.close();
     }
