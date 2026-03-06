@@ -10,7 +10,7 @@ class Node {
     }
 }
 
-public class PalindromeCheckerapp{
+public class PalindromeCheckerapp {
 
     // Reverse linked list
     static Node reverse(Node head) {
