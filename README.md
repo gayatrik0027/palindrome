@@ -1,1 +1,1 @@
-# Queue + Stack based Palindrome Check program (UC6) in Java
+# Case-Insensitive & Space-Ignored Palindrome Checker.
